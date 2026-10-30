@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sudais Nazir – Penetration Tester</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
+<style>
+:root{--bg:#000;--ink:#f3f1fa;--mut:#8c8a99;--line:#25232e;--pu:#8b5cf6;--pu2:#b9a2ff;--card:#0d0c12;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Manrope,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible{outline:2px solid var(--pu2);outline-offset:3px}
+h1,h2,h3{font-family:Syne,system-ui,sans-serif;margin:0;font-weight:700}
+header{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:20;display:flex;justify-content:space-between;padding:20px 28px;font-size:13px;mix-blend-mode:difference}
+header b{font:700 14px Syne,sans-serif}header nav{display:flex;gap:28px}
+.side{position:fixed;left:28px;bottom:calc(28px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;flex-direction:column;gap:14px;font-size:12px;color:var(--mut)}
+.side a:hover{color:var(--pu2)}
+@media(max-width:700px){.side{display:none}header{padding:16px 18px}header nav{gap:16px}}
+#orb{position:fixed;left:0;top:0;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,var(--pu) 60%);box-shadow:0 0 22px 6px rgba(139,92,246,.55);z-index:30;pointer-events:none;will-change:transform}
+section{min-height:100svh;padding:110px 7vw 70px;position:relative}
+#hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:10px;padding-top:80px}
+.char{position:relative;justify-self:end;width:min(520px,100%);aspect-ratio:1}
+.char::before{content:"";position:absolute;inset:18% 6% 0;background:radial-gradient(closest-side,rgba(139,92,246,.55),transparent 72%);filter:blur(14px)}
+.char svg{position:relative;width:100%;height:100%;overflow:visible}
+.head,.pupil{transition:transform .12s linear;transform-box:fill-box;transform-origin:50% 70%}
+.head{transform:translate(calc(var(--x,0)*8px),calc(var(--y,0)*5px)) rotate(calc(var(--x,0)*5deg))}
+.pupil{transform:translate(calc(var(--x,0)*4px),calc(var(--y,0)*3px))}
+.tt{padding-left:2vw}.tt small{display:block;font-size:clamp(18px,2.6vw,30px);color:var(--ink);font-weight:500}
+.tt h1{font-size:clamp(40px,6.4vw,92px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+.tt h1 span{display:block;color:transparent;-webkit-text-stroke:1px var(--pu2);background:linear-gradient(90deg,var(--pu2),var(--pu));-webkit-background-clip:text;background-clip:text;opacity:.55}
+.tt p{max-width:30em;color:var(--mut);margin:22px 0 0}
+.go{display:inline-block;margin-top:26px;padding:12px 26px;border:1px solid var(--pu);border-radius:999px;font-weight:600;font-size:14px;transition:background .25s}.go:hover{background:var(--pu)}
+@media(max-width:800px){#hero{grid-template-columns:1fr;padding-top:96px;text-align:left}.char{justify-self:center;max-width:340px;order:-1}.tt{padding:0}}
+h2{font-size:clamp(34px,6vw,76px);line-height:1;letter-spacing:-.02em}h2 em{font-style:normal;color:var(--pu2)}
+.js .rv{opacity:0;transform:translateY(30px) rotateX(10deg);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.2,1)}.js .rv.in{opacity:1;transform:none}
+#about{display:grid;place-items:center;text-align:center}#about p{max-width:36em;font-size:clamp(18px,2.2vw,26px);line-height:1.5;margin:22px auto 0}#about small{color:var(--pu2);font-weight:600}
+.stats{display:flex;gap:clamp(24px,5vw,70px);justify-content:center;flex-wrap:wrap;margin-top:44px}.stats b{display:block;font:700 clamp(34px,5vw,56px)/1 Syne,sans-serif}.stats span{color:var(--mut);font-size:13px}
+#do{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+#do h2{font-size:clamp(44px,9vw,120px)}#do h2 span{color:var(--pu2)}
+.desk{position:relative;width:100%;max-width:520px;justify-self:center}.desk::before{content:"";position:absolute;inset:30% 5% 0;background:radial-gradient(closest-side,rgba(255,110,150,.28),transparent 75%)}.desk svg{position:relative;width:100%}
+.dl{border-left:1px solid var(--line);padding-left:26px}.dl div{padding:16px 0;border-bottom:1px solid var(--line)}.dl h3{font-size:22px;margin-bottom:4px}.dl p{margin:0;color:var(--mut);font-size:15px}
+@media(max-width:800px){#do{grid-template-columns:1fr}.dl{padding-left:18px}}
+#career{display:grid;place-items:center;text-align:center}
+.tl{width:min(780px,100%);margin-top:50px;text-align:left;position:relative}.tl::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(var(--pu),transparent)}
+.tl div{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:0 0 38px 28px;position:relative}.tl div::before{content:"";position:absolute;left:-4px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--pu2);box-shadow:0 0 12px var(--pu)}
+.tl b{font:700 24px Syne,sans-serif}.tl h3{font-size:19px}.tl p{margin:4px 0 0;color:var(--mut);font-size:15px}
+@media(max-width:600px){.tl div{grid-template-columns:1fr;gap:4px}}
+.rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;margin:40px -7vw 0;padding:0 7vw 20px;-webkit-overflow-scrolling:touch}
+.card{flex:0 0 min(360px,82vw);scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:10px;transition:border-color .3s}.card:hover{border-color:var(--pu)}
+.card i{font:700 14px Syne,sans-serif;color:var(--pu2);font-style:normal}.card h3{font-size:24px}.card p{margin:0;color:var(--mut);font-size:15px}
+.sc{align-self:flex-start;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:600;background:#2b1a3d;color:var(--pu2)}
+.lk{display:flex;gap:14px;flex-wrap:wrap;margin-top:auto;padding-top:8px;font-size:14px}.lk a{border-bottom:1px solid var(--pu)}.lk a:hover{color:var(--pu2)}
+#tech{padding:110px 0 0;min-height:100svh;overflow:hidden}#tech h2{text-align:center;position:relative;z-index:2;pointer-events:none;font-size:clamp(28px,5vw,56px);letter-spacing:0;text-transform:uppercase}
+#tech canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y}
+#contact{display:grid;place-items:center;text-align:center;min-height:80svh}.mail{display:block;font:700 clamp(22px,5vw,60px)/1.15 Syne,sans-serif;word-break:break-all;color:var(--pu2);margin:24px 0}
+.row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}footer{color:var(--mut);font-size:13px;margin-top:70px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="orb" aria-hidden="true"></div>
+<header><b>Sudais Nazir</b><nav><a href="#about">About</a><a href="#work">Work</a><a href="#contact">Contact</a></nav></header>
+<div class="side"><a href="https://github.com/sudaisnazir2381-lang">GitHub</a><a href="https://linkedin.com/in/sudais-nazir-233b97392">LinkedIn</a><a href="mailto:sudaisnazir2381@gmail.com">Email</a></div>
+
+<section id="hero">
+<div class="tt">
+<small>A security-minded</small>
+<h1>Penetration<span>Tester</span></h1>
+<p>I find access control flaws, IDORs and injection bugs in web apps and APIs, and report them responsibly.</p>
+<a class="go" href="#work">See my findings</a>
+</div>
+<div class="char" id="char">
+<svg viewBox="0 0 300 300" aria-label="3D cartoon character of a developer in a white cap">
+<defs><radialGradient id="sk" cx="40%" cy="35%"><stop offset="0" stop-color="#e0906a"/><stop offset="1" stop-color="#b86a48"/></radialGradient><linearGradient id="bd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2a31"/><stop offset="1" stop-color="#0b0b0e"/></linearGradient><radialGradient id="cp" cx="35%" cy="25%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#c9c9d4"/></radialGradient></defs>
+<path d="M30 300C34 232 80 214 150 212c70 2 116 20 120 88z" fill="url(#bd)"/>
+<path d="M118 205h64v22c-20 12-44 12-64 0z" fill="#a85f40"/>
+<g class="head">
+<circle cx="78" cy="146" r="15" fill="url(#sk)"/><circle cx="222" cy="146" r="15" fill="url(#sk)"/>
+<ellipse cx="150" cy="140" rx="74" ry="72" fill="url(#sk)"/>
+<path d="M76 118C76 62 112 40 150 40s74 22 74 78c-24-14-50-20-74-20s-50 6-74 20z" fill="url(#cp)"/>
+<path d="M74 112c26-18 52-22 76-22s50 4 76 22l-2 14c-24-16-50-20-74-20s-50 4-74 20z" fill="#18181d"/>
+<circle cx="214" cy="96" r="10" fill="#c4b0ff"/><circle cx="214" cy="96" r="5" fill="#fff"/>
+<path d="M104 130l34 6M196 130l-34 6" stroke="#2a1a14" stroke-width="7" stroke-linecap="round"/>
+<g><ellipse cx="122" cy="148" rx="17" ry="10" fill="#f4f0ea"/><ellipse cx="178" cy="148" rx="17" ry="10" fill="#f4f0ea"/>
+<circle class="pupil" cx="122" cy="149" r="6" fill="#2a1a14"/><circle class="pupil" cx="178" cy="149" r="6" fill="#2a1a14"/></g>
+<path d="M112 178q38 14 76 0 0 24-38 24t-38-24z" fill="#fff"/><path d="M112 178q38 14 76 0" stroke="#4a2a20" stroke-width="5" fill="none" stroke-linecap="round"/>
+</g></svg></div>
+</section>
+
+<section id="about"><div>
+<small class="rv">About me</small>
+<h2 class="rv">Finding bugs <em>before</em> attackers do</h2>
+<p class="rv">I’m a penetration tester at Zypher and an independent bug bounty researcher. I test web apps and APIs, publish what I find, and build tools that teach others how to do the same.</p>
+<div class="stats rv"><div><b>2</b><span>Published CVEs</span></div><div><b>9</b><span>Hall of Fame</span></div><div><b>240+</b><span>PortSwigger labs</span></div><div><b>50</b><span>Vulnerable examples built</span></div></div>
+</div></section>
+
+<section id="do">
+<h2 class="rv">What<br>I <span>do</span></h2>
+<div>
+<div class="desk rv"><svg viewBox="0 0 300 200" aria-hidden="true"><ellipse cx="150" cy="186" rx="120" ry="9" fill="#1a1426"/><rect x="40" y="128" width="200" height="8" rx="4" fill="#e9e6f2"/><rect x="60" y="136" width="6" height="48" fill="#444"/><rect x="214" y="136" width="6" height="48" fill="#444"/><rect x="132" y="52" width="86" height="58" rx="5" fill="#ff7aa2"/><rect x="138" y="58" width="74" height="46" rx="3" fill="#1a0f1f"/><path d="M146 70h30M146 80h46M146 90h22" stroke="#ff9fbf" stroke-width="3" stroke-linecap="round"/><rect x="170" y="110" width="8" height="18" fill="#bbb"/><circle cx="92" cy="58" r="17" fill="#c9805a"/><path d="M75 54c2-16 30-18 34 0z" fill="#fff"/><path d="M70 76c0-8 44-8 48 8l6 44H64z" fill="#26262d"/><path d="M100 110l36 14" stroke="#26262d" stroke-width="9" stroke-linecap="round"/></svg></div>
+<div class="dl rv" style="margin-top:30px"><div><h3>Web pentesting</h3><p>Authentication, access control, IDOR, SQL injection, XSS, SSRF and business logic.</p></div><div><h3>API security</h3><p>Authentication, authorization, input validation and rate limiting.</p></div><div><h3>Research</h3><p>Responsible disclosure, CVEs and open-source training labs.</p></div></div>
+</div></section>
+
+<section id="career"><div>
+<h2 class="rv">My career &amp;<br><em>experience</em></h2>
+<div class="tl rv">
+<div><b>2025</b><span><h3>Independent bug bounty researcher</h3><p>Valid reports on access control, misconfiguration and information disclosure.</p></span></div>
+<div><b>2026</b><span><h3>Penetration tester, Zypher</h3><p>Web application and API security assessments.</p></span></div>
+<div><b>Now</b><span><h3>Two CVEs and Code Red</h3><p>Published SQL injection findings and built a 50-example training platform.</p></span></div>
+</div></div></section>
+
+<section id="work">
+<h2 class="rv">My <em>Work</em></h2>
+<div class="rail" id="rail">
+<article class="card"><i>01</i><span class="sc">High 7.3</span><h3>CVE-2026-105776</h3><p>SQL injection in the open-source IOCL Employee Movement Tracking project. Published October 2026.</p><div class="lk"><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-105776">NVD</a><a href="https://vuldb.com/cve/CVE-2026-105776">VulDB</a></div></article>
+<article class="card"><i>02</i><span class="sc">Medium 6.3</span><h3>CVE-2026-18896</h3><p>Time-based SQL injection in Student-Registration-System 1.0. Published August 2026.</p><div class="lk"><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-18896">NVD</a><a href="https://vuldb.com/cve/CVE-2026-18896">VulDB</a></div></article>
+<article class="card"><i>03</i><h3>Code Red</h3><p>A web-security training platform with 50 custom vulnerable examples across four tiers, built on Flask, PostgreSQL and Argon2.</p><div class="lk"><a href="https://github.com/sudaisnazir2381-lang/Code-Red">View on GitHub</a></div></article>
+<article class="card"><i>04</i><h3>Hall of Fame</h3><p>Responsible disclosures acknowledged by nine organizations.</p><div class="lk" id="hof"></div></article>
+</div></section>
+
+<section id="tech"><h2>My Toolstack</h2><canvas id="cv" aria-label="Floating spheres labelled with the tools I use"></canvas></section>
+
+<section id="contact"><div>
+<h2 class="rv">Need a second pair<br>of <em>eyes</em> on your app?</h2>
+<a class="mail rv" href="mailto:sudaisnazir2381@gmail.com">sudaisnazir2381@gmail.com</a>
+<div class="row rv"><button class="go" id="copy" style="background:none;color:inherit;font:600 14px Manrope,sans-serif;cursor:pointer">Copy email address</button><a class="go" href="https://github.com/sudaisnazir2381-lang">GitHub</a><a class="go" href="https://linkedin.com/in/sudais-nazir-233b97392">LinkedIn</a></div>
+<footer>© 2026 Sudais Nazir. Pakistan.</footer>
+</div></section>
+
+<script>
+(function(){
+var D=document,reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,
+lite=(navigator.deviceMemory&&navigator.deviceMemory<=4)||(navigator.hardwareConcurrency&&navigator.hardwareConcurrency<=4)||innerWidth<600;
+/* hall of fame links */
+D.getElementById("hof").innerHTML=[["BASF","https://www.basf.com/global/en/legal/responsible-disclosure-statement"],["Pescheck","https://pescheck.io/responsible-disclosure-hall-of-fame/"],["Lespa","https://lespasoftware.com/security.html?lang=nl"],["Koppa","https://www.gokoppa.com/security/hall-of-fame/"],["Strasbourg","https://www.unistra.fr/.well-known/hall-of-fame.txt"],["GBTwente","https://gbtwente.nl/responsible-disclosure"],["Pro4all","https://www.pro4all.com/legal/responsible-disclosure"],["Life.Church","https://www.life.church/vulnerability-disclosure-program/"],["PKCERT","https://vdp.pkcert.gov.pk/public-dashboard"]].map(function(x){return '<a href="'+x[1]+'" target="_blank" rel="noopener">'+x[0]+'</a>'}).join("");
+/* reveal */
+var rv=D.querySelectorAll(".rv");
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.15});[].forEach.call(rv,function(x){io.observe(x)})}else[].forEach.call(rv,function(x){x.classList.add("in")});
+/* copy */
+var c=D.getElementById("copy"),em="sudaisnazir2381@gmail.com";
+c.onclick=function(){try{navigator.clipboard.writeText(em).then(function(){c.textContent="Copied"},function(){c.textContent=em})}catch(z){c.textContent=em}setTimeout(function(){c.textContent="Copy email address"},2600)};
+/* pointer: orb follows, character looks at you */
+var orb=D.getElementById("orb"),ch=D.getElementById("char"),px=innerWidth/2,py=innerHeight/2,ox=px,oy=py,run=0;
+function tick(){ox+=(px-ox)*.18;oy+=(py-oy)*.18;orb.style.transform="translate("+ox+"px,"+oy+"px)";
+var r=ch.getBoundingClientRect(),nx=Math.max(-1,Math.min(1,(px-(r.left+r.width/2))/(innerWidth/2))),ny=Math.max(-1,Math.min(1,(py-(r.top+r.height/2))/(innerHeight/2)));
+ch.style.setProperty("--x",nx.toFixed(2));ch.style.setProperty("--y",ny.toFixed(2));
+if(Math.abs(px-ox)+Math.abs(py-oy)>.5)requestAnimationFrame(tick);else run=0}
+function mv(e){var t=e.touches?e.touches[0]:e;px=t.clientX;py=t.clientY;if(!run&&!reduce){run=1;requestAnimationFrame(tick)}}
+addEventListener("pointermove",mv,{passive:true});addEventListener("touchmove",mv,{passive:true});
+/* toolstack: light 2D sphere physics, sprites pre-rendered once */
+var cv=D.getElementById("cv"),g=cv.getContext("2d");if(!g)return;
+var L=["Burp","Nmap","ffuf","sqlmap","Nuclei","httpx","Katana","Dalfox","jwt_tool","Postman","Kali","Go","Bash","Flask","SQL","XSS","IDOR","SSRF","API","OAuth","Amass","Arjun","jq","curl"].slice(0,lite?14:24),
+B=[],W=0,H=0,dpr=Math.min(devicePixelRatio||1,lite?1:1.5),mx=-999,my=-999,on=false,last=0;
+function sprite(t,y,r){var s=document.createElement("canvas"),d=r*2;s.width=s.height=d;var x=s.getContext("2d"),gr=x.createRadialGradient(r*.65,r*.55,r*.1,r,r,r);
+gr.addColorStop(0,y?"#ffe36b":"#fff");gr.addColorStop(1,y?"#d9a400":"#b9bcc7");x.fillStyle=gr;x.beginPath();x.arc(r,r,r,0,6.283);x.fill();
+x.fillStyle="#111";x.font="700 "+Math.round(r*.4)+"px Manrope,sans-serif";x.textAlign="center";x.textBaseline="middle";x.fillText(t,r,r+1,r*1.7);return s}
+function size(){W=cv.width=Math.round(cv.clientWidth*dpr);H=cv.height=Math.round(cv.clientHeight*dpr);
+var base=Math.max(26,Math.min(W,H)/(lite?9:11));B=L.map(function(t,i){var r=Math.round(base*(.85+(i%3)*.15));return{r:r,x:r+Math.random()*(W-2*r),y:-Math.random()*H,vx:(Math.random()-.5)*2,vy:0,s:sprite(t,i%4==1,r)}});frame(0,1)}
+function frame(t,once){
+g.clearRect(0,0,W,H);var i,j,a,b,k;
+for(i=0;i<B.length;i++){a=B[i];a.vy+=.25*dpr;a.x+=a.vx;a.y+=a.vy;
+var dx=a.x-mx*dpr,dy=a.y-my*dpr,d=Math.sqrt(dx*dx+dy*dy);if(d<a.r*2.2&&d>0){a.vx+=dx/d*1.2;a.vy+=dy/d*1.2}
+if(a.x<a.r){a.x=a.r;a.vx*=-.8}if(a.x>W-a.r){a.x=W-a.r;a.vx*=-.8}
+if(a.y>H-a.r){a.y=H-a.r;a.vy*=-.65;a.vx*=.985;if(Math.abs(a.vy)<1)a.vy=0}
+for(j=i+1;j<B.length;j++){b=B[j];dx=b.x-a.x;dy=b.y-a.y;d=Math.sqrt(dx*dx+dy*dy);k=a.r+b.r;if(d<k&&d>0){var o=(k-d)/2,nx=dx/d,ny=dy/d;a.x-=nx*o;a.y-=ny*o;b.x+=nx*o;b.y+=ny*o;var rv=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;if(rv<0){a.vx+=nx*rv*.5;a.vy+=ny*rv*.5;b.vx-=nx*rv*.5;b.vy-=ny*rv*.5}}}
+g.drawImage(a.s,a.x-a.r,a.y-a.r)}}
+function loop(t){if(!on)return;requestAnimationFrame(loop);if(t-last<(lite?33:16))return;last=t;frame(t)}
+cv.addEventListener("pointermove",function(e){var r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+cv.addEventListener("pointerleave",function(){mx=my=-999});
+size();addEventListener("resize",size);
+if(!reduce&&"IntersectionObserver" in window)new IntersectionObserver(function(e){if(e[0].isIntersecting){if(!on){on=true;requestAnimationFrame(loop)}}else on=false}).observe(cv);
+})();
+</script>
+</body>
+</html>
